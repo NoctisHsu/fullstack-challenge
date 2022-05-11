@@ -3,6 +3,7 @@
 
 # Cache
 .cache
+.parcel-cache
 
 # Local System
 .DS_store
@@ -16,3 +17,7 @@ node_modules
 # Output
 build
 dist
+
+.history/
+server/orbitdb
+server/ipfs
