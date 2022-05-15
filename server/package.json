@@ -5,8 +5,11 @@
   "engines": {
     "node": ">=16"
   },
+  "main": "src/index.ts",
   "scripts": {
-    "start": ""
+    "start": "cross-env NODE_ENV=dev ts-node -T src/index.ts",
+    "dev": "cross-env NODE_ENV=dev nodemon",
+    "build": "tsc"
   },
   "dependencies": {
     "apollo": "^2.33.11",
