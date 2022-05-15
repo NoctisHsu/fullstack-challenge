@@ -1,0 +1,12 @@
+query Query($skip: Int, $limit: Int) {
+  articles(skip: $skip, limit: $limit) {
+    data {
+      _id
+      author
+      title
+      content
+      createDate
+    }
+    total
+  }
+}

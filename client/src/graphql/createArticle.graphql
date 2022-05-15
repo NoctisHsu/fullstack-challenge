@@ -1,0 +1,9 @@
+mutation Mutation($article: ArticleCreate!) {
+  createArticle(article: $article) {
+    _id
+    author
+    title
+    content
+    createDate
+  }
+}
