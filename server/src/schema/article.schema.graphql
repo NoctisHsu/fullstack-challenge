@@ -1,18 +1,19 @@
-type Query {
-  article(id: String!): Article
-  articles(skip: Int, limit: Int): Articles
-}
-
 type Article {
-  id: String
+  _id: String
   author: String
   title: String
   content: String
+  createDate: String
 }
 
 type Articles {
   data: [Article]
   total: Int
+}
+
+type Query {
+  article(_id: String!): Article
+  articles(skip: Int, limit: Int): Articles
 }
 
 type Mutation {
@@ -22,4 +23,5 @@ type Mutation {
 input ArticleCreate {
   title: String
   content: String
+  author: String
 }
