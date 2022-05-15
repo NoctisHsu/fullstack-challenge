@@ -21,3 +21,4 @@ dist
 .history/
 server/orbitdb
 server/ipfs
+client/.next
