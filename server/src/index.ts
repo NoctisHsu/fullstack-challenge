@@ -1,37 +1,31 @@
-/**
- * This is an incomplete script of apollo server. Please
- * make it live with features we requested. :)
- *
- */
+import { ApolloServer } from 'apollo-server';
+import * as articleResolver from './resolvers/articles.resolver';
+import { connectDb, disconnectDb } from './providers/db.provider';
 
-require('dotenv').config()
+const PORT = process.env.PORT || "9000"
 
-import { ApolloServer, gql } from 'apollo-server'
+async function bootstrap() {
+  const server = new ApolloServer({
+    cors: { origin: '*' },
+    dataSources: () => ({}),
+    debug: true,
+    resolvers: {
+      Query: { ...articleResolver.Query },
+      Mutation: { ...articleResolver.Mutation },
+    },
+    typeDefs: require('fs').readFileSync('src/schema/article.schema.graphql').toString('utf-8'),
+  })
 
-// init server
-const server = new ApolloServer({
-  cors: {
-    origin: [],
-  },
-  dataSources: () => ({ }),
-  debug: true,
-  resolvers: {
-    Query: {},
-    Mutation: {},
-  },
-  typeDefs: gql`
-    type Article {
-      title: string
-      content: string
-    }
+  await connectDb();
+  const { url } = await server.listen(PORT);
+  console.log(`Server is running, GraphQL Playground available at ${url}`);
 
-    type Query {
-      articles: [Article]
-    }
-  `,
-})
+  process.on('SIGINT', async () => {
+    await disconnectDb();
+    await server.stop();
+    console.log(`Server is stop`);
+    process.exit(0);
+  });
+}
 
-// run server up
-server
-  .listen({ port: '' })
-  .then(({ url }) => console.log(`Server is ready at ${url}`))
+bootstrap();
