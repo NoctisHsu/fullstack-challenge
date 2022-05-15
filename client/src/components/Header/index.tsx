@@ -5,6 +5,8 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import ConnectButton from "./ConnectButton";
+import AccountModal from "./AccountModal";
 import { Fragment } from "react";
 
 export default function WithSubnavigation() {
@@ -22,8 +24,12 @@ export default function WithSubnavigation() {
               Logo
             </Text>
           </Flex>
+          <Flex flex={{ base: 1, md: 0 }} justify={"flex-end"}>
+            <ConnectButton handleOpenModal={onOpen} />
+          </Flex>
         </Flex>
       </Box>
+      <AccountModal isOpen={isOpen} onClose={onClose} />
     </Fragment>
   );
 }

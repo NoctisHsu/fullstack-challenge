@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ApolloProvider } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { DAppProvider } from "@usedapp/core";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "~/src/components/Layout";
 import Header from "~/src/components/Header";
@@ -14,6 +15,7 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
+      <DAppProvider config={{}}>
         <ChakraProvider>
           <Layout>
             <Header />
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Footer />
           </Layout>
         </ChakraProvider>
+      </DAppProvider>
     </ApolloProvider>
   );
 }
