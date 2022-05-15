@@ -1,16 +1,11 @@
 import * as IPFS from 'ipfs'
 import OrbitDB from 'orbit-db'
 import DocumentStore from 'orbit-db-docstore'
+import { IArticle } from '../../../typings/article';
 
-export interface Article {
-    id: String
-    author: String
-    title: String
-    content: String
-}
 
 let orbitdb: OrbitDB;
-export let articleDb: DocumentStore<Article>;
+export let articleDb: DocumentStore<IArticle>;
 
 /**
  * connect Db

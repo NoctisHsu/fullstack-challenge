@@ -16,5 +16,6 @@
     "esModuleInterop": true,
     "strictPropertyInitialization": false
   },
+  "include": ["../typings/**/*.ts", "./src/**/*.ts", "./test/**/*.ts"],
   "exclude": ["node_modules"]
 }
