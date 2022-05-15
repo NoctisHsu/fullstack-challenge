@@ -1,8 +1,10 @@
 # Full-stack Engineer Challenge
 
 The challenge consists of two parts:
-* [Code Challenge](./CodeChallenge.md)
-* [Written Challenge](./WrittenChallenge.md)
+
+- [Code Challenge](./CodeChallenge.md)
+  ![alt text](./demo//demo.png "Demo")
+- [Written Challenge](./WrittenChallenge.md)
 
 Please clone this repo and submit your work in a seperate fork.
 
